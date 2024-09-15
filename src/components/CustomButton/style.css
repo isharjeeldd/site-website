@@ -1,0 +1,63 @@
+.btn-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 10px auto 35px;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0px 25px 15px;
+    min-width: 150px;
+}
+
+.btn span {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    transition: 0.3s;
+}
+
+/*--- btn-1 ---*/
+.btn-1::before {
+    background-color: rgb(255, 255, 255);
+    transition: 0.3s ease-out;
+}
+
+.btn-1 span {
+    background-color: #2A9C6C;
+    color: rgb(255, 255, 255);
+    transition: 0.2s 0.1s;
+}
+
+.btn-1 span:hover {
+    color: rgb(0, 0, 0);
+    transition: 0.2s 0.1s;
+}
+
+/* 1.hover-filled-slide-down */
+.btn.hover-filled-slide-down::before {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.btn.hover-filled-slide-down:hover::before {
+    height: 0%;
+}

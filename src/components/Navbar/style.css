@@ -1,0 +1,17 @@
+.group:hover .dropdown {
+    visibility: visible;
+    opacity: 1;
+}
+
+.group .dropdown {
+    opacity: 0;
+    transition: 0.15s ease-in-out all;
+}
+
+.onScrollNav {
+    margin-top: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    top: 0 !important;
+    background-color: white;
+}
