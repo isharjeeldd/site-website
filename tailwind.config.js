@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -14,20 +14,20 @@ export default {
         heading: '#1C1C1C',  // Dull Black
       },
       backgroundImage: {
-        'expert-cons': "url('./src/assets/Images/expertCons.png')",
-        'in-depth': "url('./src/assets/Images/inDepth.png')",
-        'ethical-ai-nav': "url('./src/assets/Images/ethicalAiNav.png')",
-        'footer-bg': "url('./src/assets/Images/footerBg.png')",
-        'home-bg': "url('./src/assets/Images/homeBg.png')",
-        'consultancy-bg': "url('./src/assets/Images/consultancyBg.png')",
-        'ai-consultancy-bg': "url('./src/assets/Images/aiConsultancy.png')",
-        'predict-ai-future-bg': "url('./src/assets/Images/predictAiFuture.png')",
-        'cta-bg': "url('./src/assets/Images/ctaBg.png')",
-        'site-founding-bg': "url('./src/assets/Images/siteFounding.png')",
-        'our-mission-bg': "url('./src/assets/Images/ourMission.png')",
-        'research-bg': "url('./src/assets/Images/researchBg.png')",
-        'research-about-bg': "url('./src/assets/Images/researchAboutUs.png')",
-        'contact-us-bg': "url('./src/assets/Images/bgContact.png')",
+        'expert-cons': "url('/assets/Images/expertCons.png')",
+        'in-depth': "url('/assets/Images/inDepth.png')",
+        'ethical-ai-nav': "url('/assets/Images/ethicalAiNav.png')",
+        'footer-bg': "url('/assets/Images/footerBg.png')",
+        'home-bg': "url('/assets/Images/homeBg.png')",
+        'consultancy-bg': "url('/assets/Images/consultancyBg.png')",
+        'ai-consultancy-bg': "url('/assets/Images/aiConsultancy.png')",
+        'predict-ai-future-bg': "url('/assets/Images/predictAiFuture.png')",
+        'cta-bg': "url('/assets/Images/ctaBg.png')",
+        'site-founding-bg': "url('/assets/Images/siteFounding.png')",
+        'our-mission-bg': "url('/assets/Images/ourMission.png')",
+        'research-bg': "url('/assets/Images/researchBg.png')",
+        'research-about-bg': "url('/assets/Images/researchAboutUs.png')",
+        'contact-us-bg': "url('/assets/Images/bgContact.png')",
       },
       fontSize: {
         heading: ['32px', '40px'],  // Adjust as needed
