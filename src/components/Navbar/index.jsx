@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import SiteLogoWhite from "../../assets/Logo/siteWhiteLogo.png";
 import SiteLogoBlack from "../../assets/Logo/siteBlackLogo.png";
 import CustomButton from '../CustomButton';
+import { AppRoutes } from '../../constants';
 
 const Navbar = () => {
     const { pathname } = useLocation();
@@ -31,10 +32,15 @@ const Navbar = () => {
     useEffect(() => {
         setActivePath(pathname);
         window.scrollTo(0, 0);
-        if (pathname.includes("/about-us") || pathname.includes("/research") || pathname.includes("/contact-us")) {
+        if (pathname.includes("/about-us") || pathname.includes("/research") || pathname.includes("/contact-us") || pathname.includes("/blogs")) {
             setNavbarHasBg(true);
         } else {
-            setNavbarHasBg(false);
+            if (pathname.includes(AppRoutes)) {
+                setNavbarHasBg(true);
+            }
+            else {
+                setNavbarHasBg(false);
+            }
         }
     }, [pathname]);
 
@@ -99,6 +105,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/blogs" className={`${activePath === "/blogs" ? "font-semibold" : "font-[400]"} block py-2 px-3 xl:p-0 ${isScrolled || navbarHasBg ? "text-black" : "text-white"} transition-all ease-in-out text-[15px]`}>
+                                Blogs
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/contact-us">
                                 <CustomButton btnTitle={"Contact Us"} />
                             </Link>
@@ -111,44 +122,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-{/* <li className='self-start xl:self-center'>
-                                    <div className="mx-auto flex w-full items-center justify-center">
-                                        <div className="group relative cursor-pointer">
-                                            <div className="flex items-center justify-between space-x-5">
-                                                <button className={`menu-hover flex items-center justify-between w-full p-3 rounded text-[15px] ${isScrolled ? "text-black hover:text-gray-500" : (navbarHasBg ? "text-black hover:text-gray-500" : "text-[#BCBCBC] hover:text-white")} transition-all ease-in-out`}>Publications
-                                                    <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div className="dropdown invisible border-0 absolute z-50 w-max flex bg-gray-100 text-gray-800 opacity-0 transition-opacity ease-in-out duration-300">
-                                                <div>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/publication1' className={`${navListItem}`}>Publication 1</Link>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/publication2' className={`${navListItem}`}>Publication 2</Link>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/publication3' className={`${navListItem}`}>Publication 3</Link>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/publication4' className={`${navListItem}`}>Publication 4</Link>
-                                                </div>
-                                                <div>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/services/std-testing' className={`${navListItem}`}>STD Testing</Link>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/services/weight-loss' className={`${navListItem}`}>Weight Loss </Link>
-                                                    <Link onClick={() => {
-                                                        setMobileMenuOpen(false);
-                                                    }} to='/services/women-health' className={`${navListItem}`}>Women's Health</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> */}

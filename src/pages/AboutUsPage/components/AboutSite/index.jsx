@@ -31,7 +31,7 @@ const AboutSite = () => {
                             </div>
                         </div>
 
-                        <Lottie style={{ width: "400px" }} animationData={LottieFile} loop={true} />
+                        <Lottie style={{ width: "300px" }} animationData={LottieFile} loop={true} />
 
                         <div className="flex flex-col gap-12 w-[40%]">
                             <div className='text-end'>

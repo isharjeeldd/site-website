@@ -4,6 +4,17 @@ import pkliImage from "../assets/Images/pkliImage.jpg"
 import researchImage from "../assets/Images/researchImage.png"
 import researchOngoinImage from "../assets/Images/researchOngoing.png"
 
+export const AppRoutes = {
+    homePath: "/",
+    aboutUsPath: "/about-us",
+    researchPath: "/research",
+    consultancyPath: "/consultancy",
+    contactUsPath: "/contact-us",
+    blogsListPath: "/blogs",
+    blogsDetailsPath: "/blogs/:id",
+    errorPath: "*"
+}
+
 export const aiConsultancy = {
     tag: "Consultancy",
     heading: "Comprehensive Range of AI Consultancy Services",
