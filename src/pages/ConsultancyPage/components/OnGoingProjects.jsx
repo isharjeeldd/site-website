@@ -1,12 +1,19 @@
 import React from 'react'
 import { onGoingProjectPKLI, onGoingProjectWai } from '../../../constants'
-import GenericPage from './GenericPage'
+import { container, paragraph } from '../../../styles/globals'
+import TestimonialProjects from './TestimonialProjects'
 
 const OnGoingProjects = () => {
     return (
-        <div className='mb-[150px]'>
-            <GenericPage data={onGoingProjectWai} isTag={true} isBackground={false} isFlexReverse={true} isChildHeading={true} />
-            <GenericPage data={onGoingProjectPKLI} isTag={false} isBackground={false} isFlexReverse={false} isChildHeading={true} />
+        <div className='my-[150px]'>
+            <div className={`${container}`}>
+                <h1 className='text-black font-[600] text-center'>Testimonials</h1>
+                <p className={`${paragraph} text-center mt-6 sm:w-[50%] w-full mx-auto`}>Our commitment to Ethical AI isn’t just a promise—it’s a practice reflected in the voices of our partners and clients.</p>
+
+                <TestimonialProjects data={onGoingProjectWai} isReverse={false} />
+                <TestimonialProjects data={onGoingProjectPKLI} isReverse={true} />
+
+            </div>
         </div>
     )
 }

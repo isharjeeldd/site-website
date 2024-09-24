@@ -1,5 +1,5 @@
 import React from 'react'
-import { container } from '../../styles/globals'
+import { container, paragraph } from '../../styles/globals'
 
 const ContactUs = () => {
     return (
@@ -7,7 +7,7 @@ const ContactUs = () => {
             <div className={`${container}`}>
                 <div className='flex flex-col items-center justify-center gap-5 h-[600px]'>
                     <h1 className='text-black text-center text-[56px] leading-[1.2em] font-semibold'>Transforming AI challenges into opportunities for innovation</h1>
-                    <p className='text-[15px] text-[#868686] leading-7 mx-auto text-center w-[75%] mt-3'>In the fast-paced world of artificial intelligence, challenges are inevitable, but they also open doors to innovation. If you're facing AI challenges and need expert guidance, reach out to us through the form—our team is here to help you transform those challenges into opportunities.</p>
+                    <p className={`${paragraph} mx-auto text-center w-[75%] mt-3`}>In the fast-paced world of artificial intelligence, challenges are inevitable, but they also open doors to innovation. If you're facing AI challenges and need expert guidance, reach out to us through the form—our team is here to help you transform those challenges into opportunities.</p>
                 </div>
             </div>
             <div className='bg-contact-us-bg h-[900px] w-[80%] mx-auto bg-no-repeat bg-cover flex items-center mb-16'>

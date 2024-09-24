@@ -3,7 +3,7 @@ import ConsultancyHome from './components/ConsultancyHome'
 import AiConsultancy from './components/AiConsultancy'
 import PredictAiFuture from './components/PredictAiFuture'
 import OnGoingProjects from './components/OnGoingProjects'
-import { CTA } from '../../components'
+import AboutUsCTA from '../AboutUsPage/components/AboutUsCTA'
 
 const ConsultancyPage = () => {
     return (
@@ -12,7 +12,7 @@ const ConsultancyPage = () => {
             <AiConsultancy />
             <PredictAiFuture />
             <OnGoingProjects />
-            <CTA />
+            <AboutUsCTA />
         </>
     )
 }

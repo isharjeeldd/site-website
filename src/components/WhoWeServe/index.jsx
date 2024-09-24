@@ -1,5 +1,5 @@
 import React from 'react'
-import { container } from '../../styles/globals'
+import { container, paragraph } from '../../styles/globals'
 import businessLAi from "../../assets/Images/businessLAi.png"
 import govAgencies from "../../assets/Images/govAgencies.png"
 import nonProfitOrg from "../../assets/Images/nonProfitOrg.png"
@@ -10,8 +10,8 @@ const WhoWeServe = () => {
     return (
         <div className={`${container} my-[150px]`}>
             <div className='text-center'>
-                <h1 className='text-[26px] text-[#404040] font-[700]'>Who We Serve</h1>
-                <p className='text-[15px] w-[50%] mt-4 mx-auto text-[#868686] leading-7'>In today's rapidly evolving technological environment, responsible AI integration is crucial. SITE provides essential expertise for:</p>
+                <h1 className='text-[42px] text-black font-[700]'>Who We Serve</h1>
+                <p className={`${paragraph} sm:w-[50%] w-[100%] mt-4 mx-auto`}>In today's rapidly evolving technological environment, responsible AI integration is crucial. SITE provides essential expertise for:</p>
             </div>
             <div className='mt-4'>
                 <div className="flex gap-4 justify-center w-full">

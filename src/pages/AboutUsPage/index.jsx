@@ -2,7 +2,7 @@ import React from 'react'
 import AboutUsHome from './components/AboutUsHome'
 import AboutUsMissionStatement from './components/AboutUsMissionStatement'
 import AboutSite from './components/AboutSite'
-import AboutUsCTA from './components/AboutUsCTA'
+import { CTA } from '../../components'
 
 const AboutUsPage = () => {
     return (
@@ -10,7 +10,7 @@ const AboutUsPage = () => {
             <AboutUsHome />
             <AboutUsMissionStatement />
             <AboutSite />
-            <AboutUsCTA />
+            <CTA />
         </>
     )
 }
