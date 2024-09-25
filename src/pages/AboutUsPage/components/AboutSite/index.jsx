@@ -14,9 +14,9 @@ const AboutSite = () => {
             <div className='my-[150px]'>
                 <div className={`${container} -[150px]`}>
 
-                    <div className="flex justify-between">
+                    <div className="flex lg:flex-nowrap flex-wrap justify-between">
 
-                        <div className="flex flex-col gap-12 w-[40%]">
+                        <div className="flex flex-col gap-12 w-full lg:w-[40%]">
                             <div>
                                 <div className="flex flex-col">
                                     <h1 className='font-semibold text-[30px] text-[#0e0e0e]'>Our Expertise</h1>
@@ -33,14 +33,14 @@ const AboutSite = () => {
 
                         <Lottie style={{ width: "300px" }} animationData={LottieFile} loop={true} />
 
-                        <div className="flex flex-col gap-12 w-[40%]">
-                            <div className='text-end'>
+                        <div className="flex flex-col gap-12 w-full lg:w-[40%]">
+                            <div className='text-start lg:text-end'>
                                 <div className="flex flex-col">
                                     <h1 className='font-semibold text-[30px] text-[#0e0e0e]'>Our Impact</h1>
                                     <p className={`${paragraph} w-full sm:w-[75%] ml-auto mt-3 !leading-7 !text-[16px]`}>From shaping AI policies to transforming organizational structures, SITE's work touches every aspect of AI. We've helped businesses optimize their operations, and contributed to global dialogues on the future of AI.</p>
                                 </div>
                             </div>
-                            <div className='text-end'>
+                            <div className='text-start lg:text-end'>
                                 <div className="flex flex-col">
                                     <h1 className='font-semibold text-[30px] text-[#0e0e0e]'>Our Commitment</h1>
                                     <p className={`${paragraph} w-full sm:w-[75%] ml-auto mt-3 !leading-7 !text-[16px]`}>As AI continues to reshape our world, SITE remains committed to ensuring that these powerful technologies serve humanity's best interests. We're not just preparing for the future of AI—we're actively shaping it.</p>

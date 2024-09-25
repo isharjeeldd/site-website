@@ -64,8 +64,8 @@ const Features = () => {
 
     return (
         <div className={`${container} mt-[250px] mb-[150px]`}>
-            <div className='flex items-center'>
-                <div className='ml-auto w-[40%] sm:w-[100%]'>
+            <div className='flex w-full flex-wrap items-center'>
+                <div className='w-full md:w-full lg:w-[50%]'>
 
                     {/* First Block */}
                     <motion.div
@@ -174,7 +174,7 @@ const Features = () => {
 
                             {/* Conditionally show blocks and images */}
                             {expandedIndex === 1 && (
-                                <div className='absolute right-[-290px] top-[90px]'>
+                                <div className='absolute right-[-200px] sm:right-[-290px] lg:right-[-290px] lg:top-[90px]'>
                                     <div className='flex items-end gap-1'>
                                         <div className='flex flex-col gap-1 items-end justify-end'>
                                             <motion.div
@@ -254,11 +254,11 @@ const Features = () => {
                 </div>
 
                 {/* respective heading and description */}
-                <div className='ml-auto w-[40%] sm:w-[100%]'>
+                <div className='w-full md:w-full lg:w-[50%] mt-14 md:mt-14'>
                     <AnimatePresence mode='wait'>
                         <motion.h2
                             key={expandedIndex}
-                            className='text-black mb-3 font-semibold text-[42px]'
+                            className='text-black mb-3 font-semibold text-[30px] md:text[36px] lg:text-[42px]'
                             initial="hidden"
                             animate="visible"
                             exit="exit"

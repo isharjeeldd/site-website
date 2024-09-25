@@ -15,25 +15,26 @@ const TestimonialProjects = ({ data, isReverse }) => {
 
     return (
         <div className='my-[150px]'>
-            <div className={`flex justify-between items-center ${isReverse ? "flex-row-reverse" : ""}`}>
+            <div className={`flex flex-wrap lg:flex-nowrap justify-between items-center ${isReverse ? "flex-row lg:flex-row-reverse" : ""}`}>
                 <motion.div
-                    className={`w-[60%] flex flex-col ${isReverse ? "items-end" : "items-start justify-start"}`}
+                    className={`w-full lg:w-[60%] flex flex-col ${isReverse ? "items-start lg:items-end" : "items-start justify-start"}`}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeInVariants}
                 >
                     <h4 className='text-[20px] text-secondary font-bold mb-3'>{data.heading}</h4>
-                    <h1 className={`text-[#0e0e0e] w-full sm:w-[90%] ${isReverse ? "ml-auto text-end" : "mr-auto text-start"} text-[24px] leading-[50px]`}>{data.description}</h1>
+                    <h1 className={`text-[#0e0e0e] w-full sm:w-[90%] ${isReverse ? "text-start lg:ml-auto lg:text-end" : "mr-auto text-start"} text-[24px] leading-[50px]`}>{data.description}</h1>
                     <motion.img
                         src={data.image}
                         alt='Coding'
-                        className='mt-10 w-[500px] h-[250px] object-cover rounded-lg'
+                        className='mb-10 lg:mb-0 mt-10 w-[500px] h-[250px] object-cover rounded-lg'
                         variants={fadeInDelayVariants}
                     />
                 </motion.div>
+
                 <motion.div
-                    className='w-[40%]'
+                    className='w-full lg:w-[40%]'
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}

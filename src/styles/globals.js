@@ -1,4 +1,4 @@
-export const container = 'container xl:max-w-[1250px] lg:max-w-[1000px] xmd:max-w-[800px] md:max-w-[690px] sm:max-w-[510px] xs:max-w-[80%] mx-auto xs:max-w-none sm:max-w-none xmd:max-w-none md:max-w-none lg:max-w-screen-lg';
+export const container = 'px-4 container xl:max-w-[1250px] lg:max-w-[1000px] xmd:max-w-[800px] md:max-w-[690px] sm:max-w-[510px] xs:max-w-[80%] mx-auto xs:max-w-none sm:max-w-none xmd:max-w-none md:max-w-none lg:max-w-screen-lg';
 export const heading = "text-heading font-bold";
 export const subheading = "text-subheading font-semibold";
 export const paragraph = "text-[#4d4d4d] text-[17px] leading-8";

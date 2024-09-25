@@ -14,7 +14,7 @@ const WhoWeServe = () => {
                 <p className={`${paragraph} sm:w-[50%] w-[100%] mt-4 mx-auto`}>In today's rapidly evolving technological environment, responsible AI integration is crucial. SITE provides essential expertise for:</p>
             </div>
             <div className='mt-4'>
-                <div className="flex gap-4 justify-center w-full">
+                <div className="flex flex-wrap gap-4 justify-center w-full">
                     <div className='bg-[#F9FAFB] p-4 w-fit'>
                         <img className='h-[200px] w-[700px] rounded-sm' src={businessLAi} alt='Business' />
                         <h2 className='text-center text-gray-500 font-semibold mt-4 text-[14px]'>Businesses leveraging AI for competitive advantage</h2>
@@ -24,7 +24,7 @@ const WhoWeServe = () => {
                         <h2 className='text-center text-gray-500 font-semibold mt-4 w-[200px] mx-auto text-[14px]'>Government agencies shaping AI policy and regulation</h2>
                     </div>
                 </div>
-                <div className="flex gap-4 justify-center w-full mt-6">
+                <div className="flex flex-wrap gap-4 justify-center w-full mt-6">
                     <div className='bg-[#F9FAFB] p-4 w-fit'>
                         <img className='h-[200px] w-fit rounded-sm' src={nonProfitOrg} alt='non profit org' />
                         <h2 className='text-center text-gray-500 font-semibold mt-4 text-[14px]'>Nonprofit organizations advocating for ethical AI deployment</h2>

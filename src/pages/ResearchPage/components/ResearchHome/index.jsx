@@ -28,21 +28,21 @@ const ResearchHome = () => {
 
     return (
         <div>
-            <div className='bg-research-bg h-[900px] bg-fixed bg-no-repeat bg-cover flex items-center'>
+            <div className='bg-research-bg h-screen bg-fixed bg-no-repeat bg-cover flex items-center'>
                 <div className={`${container}`}>
                     <motion.div
-                        className='bg-cover flex items-center'
+                        className='bg-cover flex flex-wrap lg:flex-nowrap items-center'
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
                         {/* Left Side Content */}
                         <motion.div
-                            className='w-[60%] flex flex-col gap-5'
+                            className='w-full lg:w-[60%] flex flex-col gap-5'
                             variants={fadeRight} // Slide in from left
                         >
                             <motion.h1
-                                className='uppercase text-start text-[56px] font-semibold leading-[70px] text-[#0e0e0e]'
+                                className='uppercase text-start text-[46px] lg:text-[56px] font-semibold leading-[70px] text-[#0e0e0e]'
                                 variants={fadeUp} // Smooth fade and slide up
                             >
                                 The SITE Research Center
@@ -63,12 +63,12 @@ const ResearchHome = () => {
 
                         {/* Right Side Lottie Animation */}
                         <motion.div
-                            className='w-[40%]'
+                            className='w-full mt-14 lg:w-[40%] lg:mt-0'
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, ease: 'easeOut' }} // Subtle scale-in effect
                         >
-                            <Lottie style={{ width: "500px" }} animationData={LottieFile} loop={true} />
+                            <Lottie className='w-fit lg:w-[500px]' animationData={LottieFile} loop={true} />
                         </motion.div>
                     </motion.div>
                 </div>

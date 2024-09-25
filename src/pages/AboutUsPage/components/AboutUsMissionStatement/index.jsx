@@ -21,19 +21,19 @@ const AboutUsMissionStatement = () => {
     };
 
     return (
-        <div className='bg-our-mission-bg h-[1200px] bg-no-repeat bg-cover grid items-center justify-center w-full'>
+        <div className='bg-our-mission-bg h-full lg:h-[1200px] bg-no-repeat bg-cover grid items-center justify-center w-full'>
             <div className={`${container} relative`}>
                 {/* Slide Up Animation for the Founding Section */}
                 <motion.div
-                    className='bg-site-founding-bg w-[900px] h-[700px] bg-no-repeat object-contain text-center absolute bottom-[-400px] left-[200px]'
+                    className='bg-site-founding-bg w-full h-full lg:w-[900px] lg:h-[700px] bg-no-repeat object-contain text-center lg:absolute lg:bottom-[-400px] lg:left-[200px]'
                     variants={slideUpVariant}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }} // Animation happens once when in view
                 >
                     <div className='w-[89%] mx-auto flex flex-col items-center justify-center h-full px-10 pt-16'>
-                        <h1 className='text-[26px] font-[500] mb-6 text-black'>SITE's Founding and History</h1>
-                        <p className={`${paragraph} text-justify mt-3`}>
+                        <h1 className='text-[26px] font-[500] mb-6 lg:mt-0 mt-14 text-black'>SITE's Founding and History</h1>
+                        <p className={`${paragraph} !text-[14px] pb-7 !leading-6 lg:!text-[17px] lg:!leading-8 text-justify mt-3`}>
                             The Strategic Institute of Technology Ethics was born from a vision to bridge the gap between cutting-edge AI research and its ethical, practical application in the real world. Our founder and CEO, Anam Rafiq, recognized both AI's transformative potential and its associated risks. SITE was established with a mission to become a thought leader in responsible AI integration, particularly focusing on guiding ethical workforce transitions, combating AI exploitation of vulnerable populations, and shaping robust AI legislation and governance. Our approach combines academic rigor with practical application, using quantitative analysis and holistic methodologies to tackle complex AI challenges. As we continue to grow, SITE remains dedicated to shaping a future where AI enhances human potential while upholding the highest ethical standards. We invite you to join us on this journey towards responsible AI innovation and governance.
                         </p>
                     </div>
@@ -42,9 +42,9 @@ const AboutUsMissionStatement = () => {
 
             <div className={`${container} mt-[150px]`}>
                 {/* Slide Left (Text) and Slide Right (Image) Animations for the Our Mission Section */}
-                <div className='flex items-center justify-center gap-12'>
+                <div className='flex flex-wrap items-center justify-center gap-12'>
                     <motion.div
-                        className="flex flex-col gap-5 w-[50%]"
+                        className="flex flex-col gap-5 w-full lg:w-[50%]"
                         variants={slideLeftVariant}
                         initial="hidden"
                         whileInView="visible"
@@ -59,7 +59,7 @@ const AboutUsMissionStatement = () => {
                     <motion.img
                         src={OurMissionImage}
                         alt='Our Mission'
-                        className='w-[300px] h-[400px] object-contain'
+                        className='w-full lg:w-[300px] h-[400px] object-contain'
                         variants={slideRightVariant}
                         initial="hidden"
                         whileInView="visible"

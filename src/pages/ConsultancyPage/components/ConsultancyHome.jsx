@@ -31,7 +31,7 @@ const ConsultancyHome = () => {
                 <div>
                     {/* Animated h1 with slide-in from left effect */}
                     <motion.h1
-                        className='text-white text-start w-[60%] mb-6 text-[56px] leading-[1.2em] font-bold'
+                        className='text-white text-start w-full text-[36px] leading-[1.2em] lg:w-[60%] mb-6 lg:text-[56px] lg:leading-[1.2em] font-bold'
                         initial="hidden"
                         animate="visible"
                         variants={h1Variants}

@@ -49,32 +49,41 @@ const Home = () => {
 
     return (
         <>
-            <div ref={sectionRef} className='bg-home-bg h-[1200px] bg-fixed bg-no-repeat bg-cover flex items-center justify-center'>
+            <div ref={sectionRef} className='bg-home-bg h-screen bg-fixed bg-no-repeat bg-cover object-bottom flex items-center justify-center'>
                 <div className={`${container}`}>
                     <div>
                         <motion.h1
-                            className="text-white uppercase mt-[-180px] font-[500] leading-[100px] text-center flex flex-col gap-2 text-[100px]"
+                            className="
+                            text-white uppercase text-center flex flex-col gap-2 
+                            text-[30px] leading-[35x] font-[600]    
+                            sm:text-[38px] sm:leading-[40px]      // Base font size for small screens (mobile)
+                            md:text-[65px] md:leading-[70px] md:gap-3       // Medium devices (tablets)
+                            lg:text-[75px] lg:leading-[75px] lg:gap-4       // Large devices (laptops)
+                            xl:text-[90px] xl:leading-[90px] xl:gap-6 xl:font-[500]     // Extra-large devices (desktop)
+                          "
                             variants={staggerContainer}
                             initial="hidden"
                             animate="visible"
                         >
-                            <motion.div className='ml-[-200px]' variants={textVariant}>
+                            <motion.div className='ml-0 sm:ml-[-200px]' variants={textVariant}>
                                 Bridging the
                             </motion.div>
-                            <motion.div className='ml-14' variants={textVariant}>
+                            <motion.div className='ml-0 sm:ml-14' variants={textVariant}>
                                 gap between AI
                             </motion.div>
                             <motion.div variants={textVariant}>
                                 potential and human
                             </motion.div>
                             <motion.div
-                                className='ml-[-150px] relative inline-block overflow-visible'
+                                className='ml-0 sm:ml-[-150px] relative inline-block overflow-visible'
                                 variants={textVariant}
                             >
                                 <motion.div
-                                    className='absolute bg-[#2A9C6C] rounded-xl h-[100px] max-w-[30%]'
+                                    className='absolute bg-[#2A9C6C] rounded-xl
+                                     h-[40px] sm:h-[60px] md:h-[80px] lg:h-[100px] xl:h-[100px] // Adjust height based on screen size
+                                     w-full max-w-[40%] sm:max-w-[35%] md:max-w-[30%] lg:max-w-[25%] xl:max-w-[30%]'
                                     initial={{ width: 0 }}
-                                    animate={{ width: `${scrollProgress * 2}%` }} // Adjust width based on section scroll progress
+                                    animate={{ width: `${scrollProgress * 3}%` }} // Adjust width based on section scroll progress
                                     transition={{ ease: 'easeOut', duration: 0.3 }}
                                     style={{
                                         zIndex: 0,

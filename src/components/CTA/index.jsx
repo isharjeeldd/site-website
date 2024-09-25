@@ -8,7 +8,7 @@ const CTA = () => {
     return (
         <div className='bg-cta-bg h-[1000px] bg-no-repeat bg-cover flex items-center justify-center'>
             <section className={`${container} py-16`}>
-                <div className="flex items-center gap-14">
+                <div className="flex flex-wrap-reverse lg:flex-nowrap items-center gap-14">
                     <img src={ctaImage} alt='call to action' className='w-[600px] rounded-xl object-contain' />
                     <div>
                         <h1 className='text-[#0e0e0e] font-bold text-[36px] leading-[50px]'>Decoding the future of AI, one ethical solution at a time</h1>
