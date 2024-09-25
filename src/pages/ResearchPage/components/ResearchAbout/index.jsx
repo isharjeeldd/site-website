@@ -28,15 +28,14 @@ const ResearchAbout = () => {
         };
     }, []);
 
-    const text = `To leaders navigating the complex terrain of ethical AI – you've found your strategic allies. 
-    The Strategic Institute of Technology Ethics (SITE) Research Center is at the forefront of exploring the ethical, legal, and social implications of artificial intelligence. Our interdisciplinary approach combines rigorous academic inquiry with real-world insights to shape the future of responsible AI.`;
+    const text = `To leaders navigating the complex terrain of ethical AI – you've found your strategic allies. The Strategic Institute of Technology Ethics (SITE) Research Center is at the forefront of exploring the ethical, legal, and social implications of artificial intelligence. Our interdisciplinary approach combines rigorous academic inquiry with real-world insights to shape the future of responsible AI.`;
 
     const words = text.split(' ');
 
     return (
         <div id='research-about' className='bg-research-about-bg h-[1000px] bg-no-repeat bg-cover flex items-end lg:items-end justify-center'>
             <div className={`${container}`} ref={sectionRef}>
-                <motion.h1 className='text-white mx-auto text-center font-[500] text-[24px] leading-[50px] lg:text-[32px] lg:leading-[60px] pb-[85px] lg:pb-[160px] w-full max-w-[100%] break-words overflow-wrap'>
+                <motion.h1 className='text-white text-start mx-auto lg:text-center font-[500] text-[22px] leading-[50px] lg:text-[32px] lg:leading-[60px] pb-[85px] lg:pb-[160px] w-full max-w-[100%] break-words overflow-wrap'>
                     {words.map((word, index) => {
                         // Adjust the word's opacity based on the scroll progress
                         const wordOpacity = Math.min(Math.max((scrollProgress * 100) - index * 1, 0.3), 1);

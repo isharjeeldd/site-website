@@ -8,7 +8,7 @@ const AiConsultancy = () => {
     return (
         <>
             <div className={`${container} my-[100px]`}>
-                <h1 className='text-[#353535] font-[500] text-center w-full lg:w-[80%] mx-auto text-[30px] leading-[50px]'>
+                <h1 className='text-[#353535] font-[500] text-start lg:text-center w-full lg:w-[80%] mx-auto text-[30px] leading-[50px]'>
                     SITE's consultancy arm translates cutting-edge research into practical solutions for organizations navigating the complex landscape of AI integration and ethics
                 </h1>
             </div>

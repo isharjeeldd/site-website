@@ -34,7 +34,7 @@ const EthicalAiNav = () => {
     return (
         <div className='my-[150px] bg-ethical-ai-nav bg-no-repeat bg-cover bg-center h-[1200px] w-[100%] flex items-center justify-center'>
             <div className={`${container}`} ref={sectionRef}>
-                <motion.h1 className='text-white mx-auto text-center font-[500] text-[27px] leading-[45px] lg:text-[36px] lg:leading-[60px] w-full max-w-[100%] break-words overflow-wrap'>
+                <motion.h1 className='text-white mx-auto text-start lg:text-center font-[500] text-[24px] leading-[45px] lg:text-[36px] lg:leading-[60px] w-full max-w-[100%] break-words overflow-wrap'>
                     {words.map((word, index) => {
                         const wordOpacity = Math.min(Math.max((scrollProgress * 100) - index * 1, 0.3), 1);
 

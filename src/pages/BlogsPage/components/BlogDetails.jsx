@@ -87,7 +87,7 @@ const BlogDetails = () => {
 
             {/* Animated title */}
             <motion.h1
-                className='text-black text-[42px] font-semibold mt-6'
+                className='text-black text-[36px] leading-[50px] lg:leading-[70px] lg:text-[42px] font-semibold mt-6'
                 variants={titleVariants}
                 initial="hidden"
                 animate="visible"

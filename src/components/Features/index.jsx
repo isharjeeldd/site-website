@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence, delay } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { container, paragraph } from '../../styles/globals';
 import laptopImage from "../../assets/Images/laptopImage.jpg";
 import aiImage from "../../assets/Images/aiImage.jpg";
@@ -7,13 +7,13 @@ import aiImage from "../../assets/Images/aiImage.jpg";
 const Features = () => {
     const [expandedIndex, setExpandedIndex] = useState(0);
 
-    useEffect(() => {
-        const toggleInterval = setTimeout(() => {
-            setExpandedIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
-        }, 5000);
+    // useEffect(() => {
+    //     const toggleInterval = setTimeout(() => {
+    //         setExpandedIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
+    //     }, 5000);
 
-        return () => clearTimeout(toggleInterval);
-    }, [expandedIndex]);
+    //     return () => clearTimeout(toggleInterval);
+    // }, [expandedIndex]);
 
     const handleToggle = (index) => {
         setExpandedIndex(prevIndex => (prevIndex === index ? -1 : index));
@@ -71,9 +71,23 @@ const Features = () => {
                     <motion.div
                         className="flex items-center bg-expert-cons bg-no-repeat bg-cover p-10 cursor-pointer"
                         initial={{ height: '150px', width: '50%' }}
-                        animate={{
-                            height: expandedIndex === 0 ? '300px' : '150px',
-                            width: expandedIndex === 0 ? '75%' : '50%',
+                        animate={() => {
+                            const screenWidth = window.innerWidth;
+                            let heightValue;
+                            let widthValue;
+                            if (screenWidth < 640) {
+                                // Small screens
+                                heightValue = expandedIndex === 0 ? '100%' : '200px';
+                                widthValue = expandedIndex === 0 ? '100%' : '75%';
+                            } else {
+                                // Large screens
+                                heightValue = expandedIndex === 0 ? '300px' : '150px';
+                                widthValue = expandedIndex === 0 ? '75%' : '50%';
+                            }
+                            return {
+                                height: heightValue,
+                                width: widthValue
+                            };
                         }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
                         onClick={() => handleToggle(0)}
@@ -82,7 +96,7 @@ const Features = () => {
 
                             {/* Conditionally show blocks and images */}
                             {expandedIndex === 0 && (
-                                <div className='absolute right-[-150px] bottom-[90px]'>
+                                <div className='block lg:absolute lg:right-[-150px] lg:bottom-[90px]'>
                                     <div className='flex items-end gap-1'>
                                         <div className='flex flex-col gap-1 items-end justify-end'>
                                             <motion.div
@@ -141,7 +155,7 @@ const Features = () => {
                             )}
 
                             <motion.h2
-                                className={`text-[#404040] font-[500] cursor-pointer ${expandedIndex === 0 ? 'w-[60%]' : 'w-[80%]'}`}
+                                className={`text-[#404040] font-[500] cursor-pointer ${expandedIndex === 0 ? 'w-full lg:w-[60%] mt-6 lg:mt-0' : 'w-[80%]'}`}
                                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                                 animate={{
                                     fontSize: expandedIndex === 0 ? '26px' : '18px',
@@ -163,9 +177,25 @@ const Features = () => {
                     <motion.div
                         className="flex items-center bg-in-depth bg-no-repeat bg-cover p-10 mt-2 cursor-pointer"
                         initial={{ height: '150px', width: '50%' }}
-                        animate={{
-                            height: expandedIndex === 1 ? '300px' : '150px',
-                            width: expandedIndex === 1 ? '75%' : '50%',
+                        animate={() => {
+                            const screenWidth = window.innerWidth;
+                            let heightValue, widthValue;
+
+                            // Adjust height and width based on screen size
+                            if (screenWidth < 640) {
+                                // Small screens
+                                heightValue = expandedIndex === 1 ? '100%' : '150px';
+                                widthValue = expandedIndex === 1 ? '100%' : '75%';
+                            } else {
+                                // Large screens
+                                heightValue = expandedIndex === 1 ? '300px' : '150px';
+                                widthValue = expandedIndex === 1 ? '75%' : '50%';
+                            }
+
+                            return {
+                                height: heightValue,
+                                width: widthValue,
+                            };
                         }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
                         onClick={() => handleToggle(1)}
@@ -174,7 +204,7 @@ const Features = () => {
 
                             {/* Conditionally show blocks and images */}
                             {expandedIndex === 1 && (
-                                <div className='absolute right-[-200px] sm:right-[-290px] lg:right-[-290px] lg:top-[90px]'>
+                                <div className='block lg:absolute lg:right-[-290px] lg:top-[90px]'>
                                     <div className='flex items-end gap-1'>
                                         <div className='flex flex-col gap-1 items-end justify-end'>
                                             <motion.div
@@ -233,7 +263,7 @@ const Features = () => {
                             )}
 
                             <motion.h2
-                                className={`text-[#404040] font-[500] cursor-pointer ${expandedIndex === 1 ? 'w-[60%]' : 'w-[80%]'}`}
+                                className={`text-[#404040] font-[500] cursor-pointer ${expandedIndex === 1 ? 'w-[60%] mt-8 lg:mt-0' : 'w-[80%]'}`}
                                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                                 animate={{
                                     fontSize: expandedIndex === 1 ? '26px' : '18px',
@@ -269,7 +299,7 @@ const Features = () => {
                         </motion.h2>
                         <motion.p
                             key={expandedIndex + '_description'}
-                            className={`${paragraph} w-[80%]`}
+                            className={`${paragraph} w-full lg:w-[80%]`}
                             initial="hidden"
                             animate="visible"
                             exit="exit"

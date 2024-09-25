@@ -6,7 +6,7 @@ const ContactUs = () => {
         <>
             <div className={`${container} py-[150px]`}>
                 <div className='flex flex-col items-center justify-center gap-5 py-14'>
-                    <h1 className='text-black text-center text-[56px] leading-[1.2em] font-semibold'>Transforming AI challenges into opportunities for innovation</h1>
+                    <h1 className='text-black text-center text-[40px] lg:text-[56px] leading-[1.2em] font-semibold'>Transforming AI challenges into opportunities for innovation</h1>
                     <p className={`${paragraph} mx-auto text-center w-full lg:w-[75%] mt-3`}>In the fast-paced world of artificial intelligence, challenges are inevitable, but they also open doors to innovation. If you're facing AI challenges and need expert guidance, reach out to us through the form—our team is here to help you transform those challenges into opportunities.</p>
                 </div>
             </div>

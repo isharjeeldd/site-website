@@ -9,7 +9,7 @@ import securityOrg from "../../assets/Images/securityOrg.png"
 const WhoWeServe = () => {
     return (
         <div className={`${container} my-[150px]`}>
-            <div className='text-center'>
+            <div className='text-start lg:text-center'>
                 <h1 className='text-[42px] text-black font-[700]'>Who We Serve</h1>
                 <p className={`${paragraph} sm:w-[50%] w-[100%] mt-4 mx-auto`}>In today's rapidly evolving technological environment, responsible AI integration is crucial. SITE provides essential expertise for:</p>
             </div>

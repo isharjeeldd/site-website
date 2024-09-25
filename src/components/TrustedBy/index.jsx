@@ -38,7 +38,7 @@ const TrustedBy = () => {
         <>
             <div className={`${container} my-[100px]`} ref={sectionRef}>
                 <motion.h1
-                    className="text-[#353535] font-[500] text-center mx-auto text-[30px] leading-[50px] w-full max-w-[90%] break-words overflow-wrap"
+                    className="text-[#353535] font-[500] text-start lg:text-center mx-auto text-[22px] lg:text-[30px] leading-[40px] lg:leading-[50px] w-full max-w-[90%] break-words overflow-wrap"
                 >
                     {words.map((word, index) => {
                         const wordOpacity = Math.min(Math.max((scrollProgress * 45) - index * 1, 0.3), 1);
@@ -61,7 +61,7 @@ const TrustedBy = () => {
                         Trusted by Leading Organizations Committed to Ethical AI Innovation and
                         Governance
                     </h2>
-                    <div className="mt-10 flex gap-10 justify-center">
+                    <div className="mt-10 flex flex-wrap lg:flex-nowrap gap-10 justify-center">
                         <img className="h-10 w-fit" src={wAI} alt="wAI Industries" />
                         <img className="h-10 w-fit" src={PKL} alt="PKL" />
                         <img className="h-10 w-fit" src={ISSM} alt="ISSM" />

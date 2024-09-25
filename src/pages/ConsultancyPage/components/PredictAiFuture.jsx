@@ -34,7 +34,7 @@ const PredictAiFuture = () => {
     return (
         <div className='bg-predict-ai-future-bg h-[1000px] bg-no-repeat bg-cover flex items-center justify-center mt-[-150px]'>
             <div className={`${container}`} ref={sectionRef}>
-                <motion.h1 className='text-white mx-auto w-[90%] text-center font-[500] text-[46px] leading-[75px]'>
+                <motion.h1 className='text-white mx-auto text-start w-full lg:w-[90%] lg:text-center font-[500] text-[32px] lg:text-[46px] leading-[60px] lg:leading-[75px]'>
                     {words.map((word, index) => {
                         // Calculate word opacity based on the scroll progress
                         const wordOpacity = Math.min(Math.max((scrollProgress * 35) - index * 1, 0.3), 1);

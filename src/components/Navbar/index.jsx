@@ -167,7 +167,21 @@ const Navbar = () => {
                         data-collapse-toggle="navbar-cta"
                         onClick={toggleMobileMenu}
                         type="button"
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none text-gray-400"
+                        className="inline-flex items-center p-2 transition-all ease-in-out duration-300 w-10 h-10 justify-center text-sm rounded-lg xl:hidden text-gray-400 focus:outline-none hover:bg-glass hover:backdrop-blur-lg"
+                        style={{
+                            backgroundColor: 'transparent', // Transparent by default
+                            boxShadow: 'none',  // No shadow initially
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                            e.target.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+                            e.target.style.backdropFilter = 'blur(5px)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = 'transparent';
+                            e.target.style.boxShadow = 'none';
+                            e.target.style.backdropFilter = 'none';
+                        }}
                         aria-controls="navbar-cta"
                         aria-expanded={isMobileMenuOpen ? 'true' : 'false'}
                     >

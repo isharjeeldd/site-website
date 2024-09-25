@@ -7,8 +7,8 @@ const AboutSite = () => {
     return (
         <>
             <div className={`${container} my-[150px]`}>
-                <h1 className='text-[#0e0e0e] font-bold text-center mx-auto w-fit text-[42px] leading-[50px]'>About SITE</h1>
-                <p className={`${paragraph} text-center w-full sm:w-[75%] mx-auto mt-3`}>The Strategic Institute of Technology Ethics (SITE) stands at the forefront of responsible AI innovation and governance. Born from the vision of bridging cutting-edge research with practical application, SITE is your partner in navigating the complex landscape of AI integration.</p>
+                <h1 className='text-[#0e0e0e] font-bold text-start lg:text-center lg:mx-auto w-fit text-[42px] leading-[50px]'>About SITE</h1>
+                <p className={`${paragraph} text-start lg:text-center w-full sm:w-[75%] mx-auto mt-3`}>The Strategic Institute of Technology Ethics (SITE) stands at the forefront of responsible AI innovation and governance. Born from the vision of bridging cutting-edge research with practical application, SITE is your partner in navigating the complex landscape of AI integration.</p>
             </div>
 
             <div className='my-[150px]'>

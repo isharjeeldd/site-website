@@ -44,14 +44,14 @@ const BlogList = () => {
     return (
         <div>
             <motion.section
-                className={`${container} bg-white pb-10 pt-20 lg:pb-20 lg:py-[150px]`}
+                className={`${container} bg-white pb-10 pt-36 lg:pb-20 lg:py-[150px]`}
                 initial="hidden"
                 animate="visible"
             >
                 <div className="flex flex-wrap">
                     <div className="w-full px-4">
                         <motion.div
-                            className="mx-auto mb-[60px] text-center lg:mb-20"
+                            className="mx-auto mb-[60px] text-start lg:text-center lg:mb-20"
                             variants={headingVariants}
                         >
                             <motion.h1 className="block mb-5 text-[16px] font-bold text-secondary">
@@ -59,7 +59,7 @@ const BlogList = () => {
                             </motion.h1>
 
                             <motion.h2
-                                className={`${container} text-black mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]`}
+                                className={`text-black mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]`}
                                 variants={subHeadingVariants}
                             >
                                 Our Recent News
