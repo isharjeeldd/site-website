@@ -58,7 +58,7 @@ const Home = () => {
     <>
       <div
         ref={sectionRef}
-        className="bg-home-bg h-screen bg-fixed bg-no-repeat bg-cover object-bottom flex items-center justify-center"
+        className="bg-home-bg h-screen bg-cover bg-center object-bottom flex items-center justify-center"
       >
         <div className={`${container}`}>
           <div>
