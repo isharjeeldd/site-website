@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { container, paragraph } from "../../styles/globals";
 
-import tunnel from "../../assets/Images/tunnel.jpg";
-import train from "../../assets/Images/train.jpg";
-import research from "../../assets/Images/research.jpg";
-import neural from "../../assets/Images/neural.jpg";
+import tunnel from "../../assets/Images/tunnel1.jpg";
+import train from "../../assets/Images/train1.jpg";
+import research from "../../assets/Images/research1.jpg";
+import neural from "../../assets/Images/neural1.jpg";
 
 // Preload images
 const images = {
