@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { container, paragraph } from "../../styles/globals";
 
@@ -7,8 +7,22 @@ import train from "../../assets/Images/train.jpg";
 import research from "../../assets/Images/research.jpg";
 import neural from "../../assets/Images/neural.jpg";
 
+// Preload images
+const images = {
+  tunnel: new Image(),
+  train: new Image(),
+  research: new Image(),
+  neural: new Image(),
+};
+
+images.tunnel.src = tunnel;
+images.train.src = train;
+images.research.src = research;
+images.neural.src = neural;
+
 const Features = () => {
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
@@ -18,37 +32,48 @@ const Features = () => {
     secondBlock: 1500,
   };
 
+  // Preload images on component mount
   useEffect(() => {
-    let rafId;
-    let isScrolling = false;
+    Promise.all(
+      Object.values(images).map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete) resolve();
+            else img.onload = resolve;
+          })
+      )
+    ).then(() => setImagesLoaded(true));
+  }, []);
+
+  const updateExpandedIndex = useCallback(() => {
+    const scrollY = window.scrollY;
+
+    if (
+      scrollY >= scrollThresholds.firstBlock &&
+      scrollY < scrollThresholds.secondBlock
+    ) {
+      setExpandedIndex(0);
+    } else if (scrollY >= scrollThresholds.secondBlock) {
+      setExpandedIndex(1);
+    }
+  }, [scrollThresholds]);
+
+  useEffect(() => {
+    let ticking = false;
 
     const handleScroll = () => {
-      if (!isScrolling) {
-        isScrolling = true;
-        rafId = requestAnimationFrame(updateExpandedIndex);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateExpandedIndex();
+          ticking = false;
+        });
+        ticking = true;
       }
-    };
-
-    const updateExpandedIndex = () => {
-      const scrollY = window.scrollY;
-
-      if (
-        scrollY >= scrollThresholds.firstBlock &&
-        scrollY < scrollThresholds.secondBlock
-      ) {
-        setExpandedIndex(0);
-      } else if (scrollY >= scrollThresholds.secondBlock) {
-        setExpandedIndex(1);
-      } else {
-        setExpandedIndex(-1);
-      }
-
-      isScrolling = false;
     };
 
     const handleResize = debounce(() => {
       setWindowWidth(window.innerWidth);
-    }, 100);
+    }, 200);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
@@ -56,28 +81,12 @@ const Features = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
     };
-  }, [scrollThresholds]);
+  }, [updateExpandedIndex]);
 
-  // Debounce utility function
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  const handleToggle = (index) => {
-    setExpandedIndex((prevIndex) => (prevIndex === index ? -1 : index));
-  };
+  const handleToggle = useCallback((index) => {
+    setExpandedIndex((prev) => (prev === index ? -1 : index));
+  }, []);
 
   const containerVariants = {
     expanded: {
@@ -93,9 +102,17 @@ const Features = () => {
   };
 
   const imageVariants = {
-    initial: { scale: 0, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0, opacity: 0 },
+    initial: { scale: 0.95, opacity: 0 },
+    animate: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.2 },
+    },
+    exit: {
+      scale: 0.95,
+      opacity: 0,
+      transition: { duration: 0.1 },
+    },
   };
 
   return (
@@ -108,10 +125,11 @@ const Features = () => {
             variants={containerVariants}
             animate={expandedIndex === 0 ? "expanded" : "collapsed"}
             onClick={() => handleToggle(0)}
+            layout
           >
             <div className="relative">
               <AnimatePresence mode="wait">
-                {expandedIndex === 0 && (
+                {expandedIndex === 0 && imagesLoaded && (
                   <div className="block lg:absolute lg:right-[-150px] lg:bottom-[90px]">
                     <div className="flex items-end gap-1">
                       <div className="flex flex-col gap-1 items-end justify-end">
@@ -120,7 +138,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.1 }}
                           className="bg-secondary h-[40px] w-[50px] rounded-sm"
                         />
                         <motion.img
@@ -128,7 +145,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.2 }}
                           className="h-[100px] w-[120px] rounded-sm"
                           src={tunnel}
                           alt="Tunnel"
@@ -138,7 +154,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.3 }}
                           className="bg-primary h-[60px] w-[70px] rounded-sm"
                         />
                       </div>
@@ -148,7 +163,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.2 }}
                           className="bg-primary h-[70px] w-[80px] rounded-sm"
                         />
                         <motion.img
@@ -156,7 +170,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.3 }}
                           className="h-[100px] w-[100px] rounded-sm"
                           src={train}
                           alt="Train"
@@ -166,7 +179,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.1 }}
                           className="bg-secondary h-[30px] w-[35px] rounded-sm"
                         />
                       </div>
@@ -185,7 +197,7 @@ const Features = () => {
                   fontSize: expandedIndex === 0 ? "26px" : "18px",
                   opacity: expandedIndex === 0 ? 1 : 0.7,
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
               >
                 Expert Consultancy and Actionable Insights
               </motion.h2>
@@ -197,7 +209,7 @@ const Features = () => {
                     initial={{ width: "0%" }}
                     animate={{ width: "60%" }}
                     exit={{ width: "0%" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   />
                 )}
               </AnimatePresence>
@@ -210,10 +222,11 @@ const Features = () => {
             variants={containerVariants}
             animate={expandedIndex === 1 ? "expanded" : "collapsed"}
             onClick={() => handleToggle(1)}
+            layout
           >
             <div className="relative">
               <AnimatePresence mode="wait">
-                {expandedIndex === 1 && (
+                {expandedIndex === 1 && imagesLoaded && (
                   <div className="block lg:absolute lg:right-[-290px] lg:top-[90px]">
                     <div className="flex items-end gap-1">
                       <div className="flex flex-col gap-1 items-end justify-end">
@@ -222,7 +235,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.2 }}
                           className="h-[100px] w-[120px] rounded-sm"
                           src={research}
                           alt="Research"
@@ -232,7 +244,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.1 }}
                           className="bg-primary h-[60px] w-[70px] rounded-sm"
                         />
                         <motion.div
@@ -240,7 +251,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.3 }}
                           className="bg-secondary h-[40px] w-[50px] rounded-sm"
                         />
                       </div>
@@ -250,7 +260,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.1 }}
                           className="bg-secondary h-[30px] w-[35px] rounded-sm"
                         />
                         <motion.div
@@ -258,7 +267,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.2 }}
                           className="bg-primary h-[70px] w-[80px] rounded-sm"
                         />
                         <motion.img
@@ -266,7 +274,6 @@ const Features = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          transition={{ duration: 0.3, delay: 0.3 }}
                           className="h-[100px] w-[100px] rounded-sm"
                           src={neural}
                           alt="Neural"
@@ -285,7 +292,7 @@ const Features = () => {
                   fontSize: expandedIndex === 1 ? "26px" : "18px",
                   opacity: expandedIndex === 1 ? 1 : 0.7,
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
               >
                 In-Depth Research
               </motion.h2>
@@ -297,7 +304,7 @@ const Features = () => {
                     initial={{ width: "0%" }}
                     animate={{ width: "60%" }}
                     exit={{ width: "0%" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   />
                 )}
               </AnimatePresence>
@@ -314,7 +321,7 @@ const Features = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
             >
               {expandedIndex === 0
                 ? "Architecting Ethical AI Futures"
@@ -328,7 +335,7 @@ const Features = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
             >
               {expandedIndex === 0
                 ? "In the gold rush of AI innovation, we're the cartographers mapping the ethical terrain. As AI reshapes industries and redefines human-machine boundaries, organizations face a labyrinth of ethical, legal, and societal challenges. SITE's consultancy arm doesn't just guide you through this maze - we help you redesign it. From workforce transitions to governance frameworks, we translate cutting-edge research into actionable strategies. With SITE, you're not just adopting AI; you're crafting a responsible, innovative future."
@@ -342,5 +349,17 @@ const Features = () => {
     </div>
   );
 };
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
 
 export default Features;
