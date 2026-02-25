@@ -1,53 +1,68 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Import Framer Motion
+import { motion } from 'framer-motion';
 import { blogs } from '../../../constants/blogs';
 import { container, paragraph } from '../../../styles/globals';
+import SEO from '../../../components/SEO';
 
 const BlogDetails = () => {
     const { id } = useParams();
-    const blog = blogs.find((blog) => blog.id === id);
+    const blog = blogs.find((b) => b.id === id);
 
     if (!blog) {
-        return <p>Blog not found!</p>;
+        return (
+            <div className={`${container} py-[150px] text-center`} role="alert">
+                <h1 className="text-2xl font-semibold text-foreground">Blog not found</h1>
+                <p className="mt-4 text-muted-foreground">The article you are looking for does not exist.</p>
+            </div>
+        );
     }
 
-    // Function to format the content: separate **text** into new lines, handle lists, and style
+    const blogSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: blog.title,
+        description: blog.description,
+        image: blog.image,
+        datePublished: "2023-12-22",
+        author: {
+            "@type": "Organization",
+            name: "SITE - Strategic Institute of Technology Ethics",
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "SITE",
+        },
+    };
+
     const formatContent = (content) => {
-        const contentArray = content.split(/\*\*(.*?)\*\*/g); // Split by the ** mark
+        const contentArray = content.split(/\*\*(.*?)\*\*/g);
         return contentArray.map((text, index) => {
-            // If it's a heading (wrapped with **), return a styled heading
             if (index % 2 !== 0) {
-                return <h2 key={index} className='font-semibold text-black text-[20px] leading-[30px] mb-4'>{text}</h2>;
+                return <h2 key={index} className='font-semibold text-foreground text-[20px] leading-[30px] mb-4'>{text}</h2>;
             }
 
-            // Handle lists within the paragraph content
-            const formattedText = text.split(/\n/g).filter((line) => line.trim() !== ''); // Remove empty lines
+            const formattedText = text.split(/\n/g).filter((line) => line.trim() !== '');
 
             return formattedText.map((line, i) => {
                 if (line.startsWith('- ')) {
-                    // Unordered list item
                     return (
-                        <ul key={`ul-${i}`} className="list-disc list-inside mb-4 pl-4">
-                            <li>{line.replace('- ', '')}</li>
+                        <ul key={`ul-${index}-${i}`} className="list-disc list-inside mb-4 pl-4">
+                            <li className="dark:text-muted-foreground">{line.replace('- ', '')}</li>
                         </ul>
                     );
                 } else if (line.match(/^\d+\./)) {
-                    // Ordered list item
                     return (
-                        <ol key={`ol-${i}`} className="list-decimal list-inside mb-4 pl-4">
-                            <li>{line.replace(/^\d+\.\s*/, '')}</li>
+                        <ol key={`ol-${index}-${i}`} className="list-decimal list-inside mb-4 pl-4">
+                            <li className="dark:text-muted-foreground">{line.replace(/^\d+\.\s*/, '')}</li>
                         </ol>
                     );
                 } else {
-                    // Regular paragraph
-                    return <p key={i} className={`${paragraph} mb-6`}>{line}</p>;
+                    return <p key={`p-${index}-${i}`} className={`${paragraph} mb-6 dark:text-muted-foreground`}>{line}</p>;
                 }
             });
         });
     };
 
-    // Framer Motion variants for animations
     const imageVariants = {
         hidden: { opacity: 0.5, x: -50 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -64,8 +79,17 @@ const BlogDetails = () => {
     };
 
     return (
-        <div className={`${container} py-[150px]`}>
-            {/* Animated image */}
+        <article className={`${container} py-[150px]`}>
+            <SEO
+                title={blog.title}
+                description={blog.description}
+                keywords={`${blog.title}, AI ethics, ethical AI, SITE blog`}
+                url={`https://site-ethics.org/blogs/${blog.id}`}
+                image={blog.image}
+                type="article"
+                structuredData={blogSchema}
+            />
+
             <motion.img
                 src={blog.image}
                 alt={blog.title}
@@ -73,21 +97,20 @@ const BlogDetails = () => {
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
+                loading="eager"
             />
 
-            {/* Animated date */}
             <motion.p
-                className="text-gray-500 text-[16px] text-end mt-4 italic"
+                className="text-muted-foreground text-[16px] text-end mt-4 italic"
                 variants={dateVariants}
                 initial="hidden"
                 animate="visible"
             >
-                {blog.date}
+                <time dateTime="2023-12-22">{blog.date}</time>
             </motion.p>
 
-            {/* Animated title */}
             <motion.h1
-                className='text-black text-[36px] leading-[50px] lg:leading-[70px] lg:text-[42px] font-semibold mt-6'
+                className='text-foreground text-[36px] leading-[50px] lg:leading-[70px] lg:text-[42px] font-semibold mt-6'
                 variants={titleVariants}
                 initial="hidden"
                 animate="visible"
@@ -98,7 +121,7 @@ const BlogDetails = () => {
             <div className="blog-content text-[18px] leading-[32px] mt-8">
                 {formatContent(blog.content)}
             </div>
-        </div>
+        </article>
     );
 };
 

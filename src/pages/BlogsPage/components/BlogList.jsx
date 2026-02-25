@@ -1,4 +1,3 @@
-import React from 'react';
 import BlogCard from './BlogCard';
 import { blogsList } from '../../../constants/blogs';
 import { container, paragraph } from '../../../styles/globals';
@@ -8,8 +7,7 @@ const BlogList = () => {
     const headingVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
-            opacity: 1,
-            y: 0,
+            opacity: 1, y: 0,
             transition: { duration: 0.6, ease: 'easeOut' }
         }
     };
@@ -17,8 +15,7 @@ const BlogList = () => {
     const subHeadingVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
-            opacity: 1,
-            y: 0,
+            opacity: 1, y: 0,
             transition: { duration: 0.6, ease: 'easeOut', delay: 0.2 }
         }
     };
@@ -26,8 +23,7 @@ const BlogList = () => {
     const paragraphVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
-            opacity: 1,
-            y: 0,
+            opacity: 1, y: 0,
             transition: { duration: 0.6, ease: 'easeOut', delay: 0.4 }
         }
     };
@@ -35,16 +31,15 @@ const BlogList = () => {
     const cardVariants = {
         hidden: { opacity: 0, x: -50 },
         visible: (i) => ({
-            opacity: 1,
-            x: 0,
+            opacity: 1, x: 0,
             transition: { duration: 0.6, ease: 'easeOut', delay: i * 0.2 }
         })
     };
 
     return (
-        <div>
-            <motion.section
-                className={`${container} bg-white pb-10 pt-36 lg:pb-20 lg:py-[150px]`}
+        <section aria-labelledby="blogs-heading">
+            <motion.div
+                className={`${container} bg-background pb-10 pt-36 lg:pb-20 lg:py-[150px]`}
                 initial="hidden"
                 animate="visible"
             >
@@ -54,31 +49,31 @@ const BlogList = () => {
                             className="mx-auto mb-[60px] text-start lg:text-center lg:mb-20"
                             variants={headingVariants}
                         >
-                            <motion.h1 className="block mb-5 text-[16px] font-bold text-secondary">
+                            <motion.p className="block mb-5 text-[16px] font-bold text-secondary" aria-hidden="true">
                                 Blogs / Publications
-                            </motion.h1>
+                            </motion.p>
 
-                            <motion.h2
-                                className={`text-black mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]`}
+                            <motion.h1
+                                id="blogs-heading"
+                                className="text-foreground mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]"
                                 variants={subHeadingVariants}
                             >
                                 Our Recent News
-                            </motion.h2>
+                            </motion.h1>
 
                             <motion.p
-                                className={`${paragraph} w-full sm:w-[80%] mx-auto`}
+                                className={`${paragraph} w-full sm:w-[80%] mx-auto dark:text-muted-foreground`}
                                 variants={paragraphVariants}
                             >
-                                At SITE, we’re not only shaping the future of AI but actively engaging in the dialogue around its ethical development and implementation. Our blogs and publications serve as a platform to share thought leadership, cutting-edge research, and real-world insights into the ethical challenges and opportunities AI presents.
+                                At SITE, we&apos;re not only shaping the future of AI but actively engaging in the dialogue around its ethical development and implementation. Our blogs and publications serve as a platform to share thought leadership, cutting-edge research, and real-world insights into the ethical challenges and opportunities AI presents.
                             </motion.p>
                         </motion.div>
                     </div>
                 </div>
 
-                <motion.div className="flex flex-wrap">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                     {blogsList.map((blog, index) => (
                         <motion.div
-                            className='w-full px-4 md:w-1/2 lg:w-1/3'
                             key={blog.id}
                             custom={index}
                             initial="hidden"
@@ -94,9 +89,9 @@ const BlogList = () => {
                             />
                         </motion.div>
                     ))}
-                </motion.div>
-            </motion.section>
-        </div>
+                </div>
+            </motion.div>
+        </section>
     );
 };
 

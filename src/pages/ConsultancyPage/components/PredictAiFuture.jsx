@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { container } from '../../../styles/globals';
 
@@ -9,36 +9,30 @@ const PredictAiFuture = () => {
     useEffect(() => {
         const handleScroll = () => {
             if (!sectionRef.current) return;
-
             const section = sectionRef.current;
             const sectionTop = section.getBoundingClientRect().top;
             const sectionHeight = section.offsetHeight;
             const windowHeight = window.innerHeight;
 
-            // Calculate scroll progress as the section comes into view
             if (sectionTop <= windowHeight && sectionTop + sectionHeight >= 0) {
                 const progress = Math.min(Math.max((windowHeight - sectionTop) / (sectionHeight + windowHeight), 0), 1);
                 setScrollProgress(progress);
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const text = `We don't just predict the future of AI; we shape it. Our consultancy is your compass in the ethical AI revolution`;
+    const text = `We don\u2019t just predict the future of AI; we shape it. Our consultancy is your compass in the ethical AI revolution`;
     const words = text.split(' ');
 
     return (
-        <div className='bg-predict-ai-future-bg h-[1000px] bg-no-repeat bg-cover flex items-center justify-center mt-[-150px]'>
+        <section className='bg-predict-ai-future-bg h-[1000px] bg-no-repeat bg-cover flex items-center justify-center mt-[-150px]' aria-label="Our AI vision">
             <div className={`${container}`} ref={sectionRef}>
-                <motion.h1 className='text-white mx-auto text-start w-full lg:w-[90%] lg:text-center font-[500] text-[32px] lg:text-[46px] leading-[60px] lg:leading-[75px]'>
+                <motion.p className='text-white mx-auto text-start w-full lg:w-[90%] lg:text-center font-medium text-[32px] lg:text-[46px] leading-[60px] lg:leading-[75px]'>
                     {words.map((word, index) => {
-                        // Calculate word opacity based on the scroll progress
                         const wordOpacity = Math.min(Math.max((scrollProgress * 35) - index * 1, 0.3), 1);
-
                         return (
                             <motion.span
                                 key={index}
@@ -49,9 +43,9 @@ const PredictAiFuture = () => {
                             </motion.span>
                         );
                     })}
-                </motion.h1>
+                </motion.p>
             </div>
-        </div>
+        </section>
     );
 };
 

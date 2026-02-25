@@ -1,45 +1,45 @@
-import React from 'react'
-import { motion } from 'framer-motion'; // Import motion from framer-motion
-import { container, paragraph } from '../../../../styles/globals'
+import { motion } from 'framer-motion';
+import { container, paragraph } from '../../../../styles/globals';
 
 const AboutUsHome = () => {
     const h1Variants = {
-        hidden: { opacity: 0, y: -20 }, // Fade from the top
+        hidden: { opacity: 0, y: -20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
 
     const h2Variants = {
-        hidden: { x: 50 }, // Start below the final position
-        visible: { x: 0, transition: { duration: 0.8, ease: 'easeOut' } } // Slide up to its normal position
+        hidden: { x: 50 },
+        visible: { x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
     };
 
     const pVariants = {
-        hidden: { opacity: 0, y: 20 }, // Fade from the bottom
+        hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
     };
 
     return (
-        <div>
+        <section aria-labelledby="about-us-heading">
             <div className={`${container}`}>
                 <div className="flex flex-col items-center justify-center gap-5 h-[600px]">
-                    <motion.h1
-                        className='text-[#9E9E9E] text-[16px] text-center'
+                    <motion.p
+                        className='text-muted-foreground text-[16px] text-center'
                         variants={h1Variants}
                         initial="hidden"
                         animate="visible"
                     >
                         About us
-                    </motion.h1>
-                    <motion.h2
-                        className='text-black text-center text-[56px] leading-[1.2em] font-bold'
+                    </motion.p>
+                    <motion.h1
+                        id="about-us-heading"
+                        className='text-foreground text-center text-[56px] leading-[1.2em] font-bold'
                         variants={h2Variants}
                         initial="hidden"
                         animate="visible"
                     >
                         Shaping the Future of Ethical AI
-                    </motion.h2>
+                    </motion.h1>
                     <motion.p
-                        className={`${paragraph} text-center mx-auto w-full sm:w-[60%] mt-3`}
+                        className={`${paragraph} text-center mx-auto w-full sm:w-[60%] mt-3 dark:text-muted-foreground`}
                         variants={pVariants}
                         initial="hidden"
                         animate="visible"
@@ -48,8 +48,8 @@ const AboutUsHome = () => {
                     </motion.p>
                 </div>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
 export default AboutUsHome;
